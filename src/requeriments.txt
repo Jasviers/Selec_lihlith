@@ -1,0 +1,4 @@
+numpy
+rdflib
+SPARQLWrapper
+gensim

@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 from gensim.models import Word2Vec
 from gensim.models import KeyedVectors
 from SPARQLWrapper import SPARQLWrapper, JSON
@@ -23,7 +24,6 @@ def labels(text, prop):
             sparql.setQuery("""
                 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
                 PREFIX dbo: <http://dbpedia.org/ontology/>
-                PREFIX dbp: <http://dbpedia.org/property/>
                 SELECT ?label ?prop
                 WHERE {
                     %s rdfs:label ?label.
@@ -70,8 +70,7 @@ def rank(labels):
 
 if __name__=='__main__':
 
+    #tripletFd("../test/test2.txt", 'http://dbpedia.org/resource/')
     lab = labels("../test/test2.txt","wikiPageID")
-    #print(lab)
     ranking = rank(lab)
     print(ranking)
-    print(len(ranking))
